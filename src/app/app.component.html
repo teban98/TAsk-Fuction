@@ -1,0 +1,51 @@
+<nav class="navbar navbar-dark bg-dark aling-items-center">
+  <div class="col-md-12">
+    <h1 class="text-center text-white">My Projects Aplication</h1>
+
+  </div>
+</nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        
+        <div class="card mt-4">
+          <div class="card-body">
+            <div class="card-tittle">
+              Insert a new project
+              <div class="form-group mt-2">
+                <input type="text" [(ngModel)]="SelectedProject.name" placeholder="Instert project name" class="form-control">
+              </div>
+              <div class="form-group mt-2">
+                <input type="text" [(ngModel)]="SelectedProject.description" placeholder="Instert description" class="form-control">
+              </div>
+              <button  (click)="addOrEdit()" class="btn btn-primary">
+                submit
+              </button>
+              <button
+              *ngIf="SelectedProject.id !== 0"
+              class="btn btn-danger"
+              (click)="delete()">
+              delete
+            </button>
+            </div>
+          </div>
+        </div>
+        <ul class="list-group mt-4" >
+          <li 
+          *ngFor="let project of projectArray "
+          class="list-group-item list-group-item-action"
+          (click)="openForEdit(project)"
+          [class.active]="project == SelectedProject">
+          <span class="badge badge-primary">{{ project.id }}</span>{{ project.name }}-{{ project.description }}
+        </li>
+         
+  
+          
+        </ul>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+  
+  
